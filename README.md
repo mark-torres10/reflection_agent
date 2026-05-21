@@ -1,4 +1,6 @@
-# Reflection comparison — intelligence layer demo
+# Actually Understood — An AI that gives you the calm of a retreat guide in your pocket, not another cheerful wellness bot
+
+[Try the app yourself!](https://reflectionagent-mhkmztkehun6shvnojwvdd.streamlit.app/)
 
 ---
 
