@@ -1,147 +1,96 @@
-# Reflection Intelligence Layer Demo
+# Reflection comparison — intelligence layer demo
 
 ---
 
-## What is This?
+## What is this?
 
-This demo shows how the **intelligence layer**—system prompt, structure, and few-shot examples—not model choice, determines whether an AI reply feels like a generic wellness coach or a calm retreat guide.
+A live demo for a retreat in your pocket: a calm product that helps people feel deeply understood through reflection—not another generic chatbot.
 
-It is built for founders and product leaders evaluating a "retreat in your pocket" product. The app runs one Streamlit compare screen: same model, same user words, two different prompt stacks side by side.
+You enter the same few sentences a user might share after a long week. The app shows two replies side by side:
 
-**Not production.** This is a ~3 minute narrative demo on a shared URL, labeled as a **sample retreat guide**.
+- A generic supportive coach — warm, practical, full of tips (what most AI wellness products sound like).
+- A sample retreat guide — calm, specific, one thoughtful question at most (the direction your facilitators’ methodology points toward).
+
+Same words in. Very different experience out. That gap is what we mean by the intelligence layer—how the product is guided, structured, and exemplified—not “which AI model we bought.”
+
+This is a prototype for conversation, not your final product voice. The guide side is labeled clearly as a sample retreat guide so your team’s real facilitators remain the source of truth in week one.
 
 ---
 
 ## Screenshot
 
-![Rest / burnout — Generic vs Retreat guide](docs/plans/2026-05-21_reflection-ab-demo_482910/images/after/compare_rest_results.png)
+Rest / burnout — same user input, two columns:
+
+![Rest / burnout — generic coach vs sample retreat guide](docs/plans/2026-05-21_reflection-ab-demo_482910/images/after/compare_rest_results.png)
 
 ---
 
-## What Problems Does It Solve?
+## Who is it for?
 
-- **"Just pick a better model"** — The demo shows that voice and trust come from prompts and structure, not swapping models.
-- **Black-box AI** — Expert mode and **View prompt used** expose exactly what ran on each Compare.
-- **Generic wellness-bot tone** — The retreat guide arm is constrained to calm reflection, no tip lists, no cheerleading.
-- **Slow iteration on facilitator voice** — Defaults live in `prompts.py`; week one replaces copy while the architecture stays the same.
-
----
-
-## How Does the Demo Work?
-
-The demo is a single Streamlit app with four main ideas:
-
-1. **Scenario picker**
-   - Choose Rest / burnout, Relationship, Hard to name feelings, Career / emptiness, or Your own words.
-   - Canned scenarios prefill the text area; edits are preserved when you switch scenarios.
-
-2. **Compare**
-   - Click **Compare** to run two LangChain chains on the same input:
-     - **Generic coach** — supportive, practical, tip-friendly.
-     - **Retreat guide** — structured reflection + optional "Something to sit with" question.
-   - Both arms use the same `gpt-5-nano` instance.
-
-3. **Expert mode (sidebar)**
-   - View and edit system prompts and the few-shot example.
-   - **Reset prompts to defaults** restores `prompts.py` copy.
-   - Changes are session-only until you Compare again.
-
-4. **Transparency**
-   - Under each column, **View prompt used** shows the prompt snapshot from that run.
-   - **How this works** explains same-model / different-chain design.
+- Founders deciding what the MVP must prove before heavier investment in memory, tuning, or custom training.
+- Facilitators and product leads who need to see whether AI can hold their tone, pacing, and boundaries—not just answer quickly.
+- Anyone who has tried “helpful” AI and felt it was cheerful, vague, or full of advice when they wanted to be heard.
 
 ---
 
-## Why Should You Care?
+## What problem does it solve?
 
-- **Prove the product thesis in minutes:** Same words, visibly different experience.
-- **Build trust with non-technical stakeholders:** Prompts are visible and editable live.
-- **De-risk Phase 1:** Voice and methodology before fine-tuning, RAG, or multi-day memory.
-- **Rehearse a tight narrative:** A scripted 3-minute walkthrough is included below.
-
----
-
-## Demo script (~3 min)
-
-1. **20 sec:** "Same model, same words—only the intelligence layer changes."
-2. Scenario **Rest / burnout** → **Compare**.
-3. Read one Generic sentence that sounds like a wellness bot.
-4. Read Guide **Reflection**; point at echoed specificity; read **Something to sit with**.
-5. **30 sec:** "Week one with your facilitators replaces this sample guide—the architecture stays the same."
-6. Optional: **Hard to name feelings** scenario, Compare again.
-7. Close: "Phase 1 of the roadmap—voice before fine-tuning or heavy memory."
+| Concern | What the demo shows |
+|--------|---------------------|
+| “Won’t this just sound like every other AI coach?” | Generic column vs. guide column on the identical input. |
+| “How do we know it’s not a black box?” | You can open what guided each reply and edit that guidance, then compare again. |
+| “Can we change the voice without rebuilding the app?” | The architecture stays; your facilitators’ words replace the sample guide when you’re ready. |
+| “What should MVP focus on first?” | Reflection quality and trust before long memory, RAG, or custom training cycles. |
 
 ---
 
-## How to Try It
+## How does the demo work?
 
-**Requirements:** Python 3.10+, [uv](https://docs.astral.sh/uv/), OpenAI API key.
+1. Pick a moment — Rest / burnout, relationship, hard-to-name feelings, career emptiness, or your own words.
+2. Click Compare — Both sides read the same text you typed.
+3. Feel the contrast — Left: encouragement and steps. Right: a short reflection that echoes something you said, plus at most one deepening question.
+4. Build trust (optional) — Open Expert mode to see and lightly edit the guidance behind the retreat guide, then Compare again and watch only that side shift.
+5. See what actually ran — Under each column, View prompt used shows the exact guidance from that run (so later edits don’t confuse what you’re looking at).
 
-1. Install dependencies:
-   ```bash
-   uv sync
-   cp .env.example .env
-   # Add OPENAI_API_KEY to .env
-   ```
-2. Run the app:
-   ```bash
-   uv run streamlit run app.py
-   ```
-3. Open http://localhost:8501
-
-Optional: set `REFLECTION_MODEL=gpt-4o-mini` in `.env` if `gpt-5-nano` is unavailable in your account.
-
-**Tests** (mocked LLM, no API spend):
-
-```bash
-uv run pytest tests/ -v
-```
+Takes about three minutes to walk through once; scenarios are prefilled so you can focus on the feeling of the replies, not on typing.
 
 ---
 
-## Deploy (Streamlit Community Cloud)
+## Why this matters for your MVP
 
-1. Push this repo to GitHub.
-2. [share.streamlit.io](https://share.streamlit.io) → **New app** → connect repo.
-3. Main file path: `app.py`
-4. Add secret `OPENAI_API_KEY` in app settings.
-5. Open the shared URL ~2 minutes before a live call (cold start).
+Your build’s central question is whether AI can produce reflections that make someone say, *“That actually understood me.”* This demo is a fast, honest answer:
 
----
-
-## Stack
-
-| Tool | Purpose |
-|------|---------|
-| Streamlit | Compare UI, Expert mode, scenarios |
-| LangChain + LangChain OpenAI | Generic and guide chains |
-| Pydantic | Structured `GuideOutput` for the guide arm |
-| OpenAI `gpt-5-nano` | Shared model for both arms (`reasoning_effort=minimal`) |
-| uv | Dependency management |
+- Quality before scale — Prove the experience is specific and calm before adding multi-day journeys or heavy memory.
+- Facilitators stay in charge — Methodology, pacing, and safety rules shape every reply; the sample guide is a stand-in until your team’s voice is wired in.
+- Clear Phase 1 story — Same underlying capability, different guidance → different trust. That’s the lever you control in the near term.
 
 ---
 
-## What's Next?
+## Three-minute walkthrough (for a live call)
 
-- Replace `prompts.py` defaults with facilitator interviews (week one voice)
-- Quality lab: regression on canned scenarios before each release
-- Three-day journey demo: session notes + Day 3 continuity (separate scope)
-- Auth, persistence, RAG, and production guardrails (out of scope for this demo)
-
----
-
-## Project structure
-
-| Path | Role |
-|------|------|
-| `app.py` | Streamlit compare UI + Expert mode |
-| `prompts.py` | `get_defaults()` — version-controlled prompt strings |
-| `intelligence.py` | `run_generic`, `run_guide`, shared LLM |
-| `scenarios.json` | Canned scenario prefills |
-| `.streamlit/config.toml` | Warm neutral theme |
-| `tests/` | Unit tests (mocked LLM) |
-| `strategy_planning/` | Spec, demo prep, job context |
+1. *“I’m going to use the same words twice. Only the way the product is guided changes.”*
+2. Choose Rest / burnout → Compare.
+3. Read one line from the generic side that sounds like a wellness app.
+4. Read the guide Reflection — point to a phrase that mirrors what the user said. Read Something to sit with if there’s a question.
+5. *“In week one, your facilitators replace this sample guide. The experience architecture you’re seeing stays.”*
+6. Optional: Hard to name feelings → Compare again.
+7. Close: *“We’re proving voice and methodology first—then we decide what still needs memory or deeper customization.”*
 
 ---
 
-**This demo is a starting point. If you want to see how prompt architecture shapes product trust—not just model choice—try it out or get in touch.**
+## What’s next (after this demo)
+
+- Interview facilitators and swap the sample guide for your tone, pacing, and boundaries.
+- Agree on a short quality checklist (specific, calm, emotionally on-target) and iterate together.
+- Add lightweight continuity across days when you’re ready—only what your team defines as worth remembering.
+- Explore advanced options (deeper memory, retrieval, tuning) only where the checklist still shows a gap.
+
+---
+
+## Related work
+
+This demo sits alongside other agent prototypes built for non-technical stakeholders—lead qualification, brand-voice content, campaign alerts—with the same goal: make expert judgment visible and testable before production.
+
+---
+
+If you’re exploring how to turn facilitator expertise into an emotionally accurate MVP—not generic assistant chat—this demo is the starting conversation.
