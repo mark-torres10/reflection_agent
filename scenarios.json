@@ -1,0 +1,22 @@
+[
+  {
+    "id": "rest",
+    "label": "Rest / burnout",
+    "user_text": "I keep telling myself I'll rest this weekend, but I always find one more thing to do. I'm tired but I can't seem to stop."
+  },
+  {
+    "id": "relationship",
+    "label": "Relationship",
+    "user_text": "My partner and I had the same argument again. I shut down. I don't know how to say what I actually need."
+  },
+  {
+    "id": "numb",
+    "label": "Hard to name feelings",
+    "user_text": "People ask how I am and I say 'fine.' I'm not fine. I'm not sure what I feel, just kind of numb."
+  },
+  {
+    "id": "career",
+    "label": "Career / emptiness",
+    "user_text": "I got praise at work but I feel empty. I'm wondering if I'm in the wrong life, and that scares me."
+  }
+]
