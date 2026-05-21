@@ -12,19 +12,7 @@ It is built for founders and product leaders evaluating a "retreat in your pocke
 
 ---
 
-## Screenshots
-
-### Before (hello-world scaffold)
-
-![Hello-world baseline](docs/plans/2026-05-21_reflection-ab-demo_482910/images/before/hello_world_baseline.png)
-
-### Compare screen
-
-![Reflection comparison — landing](docs/plans/2026-05-21_reflection-ab-demo_482910/images/after/compare_landing.png)
-
-### After Compare (Rest / burnout scenario)
-
-Same model (`gpt-5-nano`), same input—different intelligence layer. Generic coach offers tips and encouragement; the sample retreat guide reflects back specific language and asks at most one deepening question.
+## Screenshot
 
 ![Rest / burnout — Generic vs Retreat guide](docs/plans/2026-05-21_reflection-ab-demo_482910/images/after/compare_rest_results.png)
 
